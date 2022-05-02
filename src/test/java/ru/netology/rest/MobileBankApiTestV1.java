@@ -3,10 +3,11 @@ package ru.netology.rest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 class MobileBankApiTestV1 {
     @Test
-    void shouldReturnDemoAccounts() {
+    void shouldPostDemoBodyRequest() {
         given()
                 .baseUri("https://postman-echo.com")
                 .body("some data")
@@ -16,7 +17,7 @@ class MobileBankApiTestV1 {
 
                 .then()
                 .statusCode(200)
-//                .body(/* --> ваша проверка здесь <-- */)
+                .body("data", equalTo("some data"))
         ;
     }
 }
